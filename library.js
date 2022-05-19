@@ -5,7 +5,7 @@ function libraryHTTP() {
     this.http = new XMLHttpRequest(); 
 }
 
-// Make HTTP GET Request (method)
+// GET Request
 libraryHTTP.prototype.get = function(url, callback) { 
     this.http.open('GET', url, true); 
 
@@ -17,39 +17,40 @@ libraryHTTP.prototype.get = function(url, callback) {
             callback('Error: ' + self.http.status);
         }
     }
-
     this.http.send();
-
 }
 
-// Make an HTTP POST Request 
-libraryHTTP.prototype.post = function(url, data, callback) { // takes data as a parameter, cause when you are adding data you are also sending it
+
+
+// POST Request 
+libraryHTTP.prototype.post = function(url, data, callback) { // this takes data as a parameter, we are adding AND sending data
     this.http.open('POST', url, true);
     this.http.setRequestHeader('Content-type', 'application/json'); // value of application/json: it is the data type we are working with
 
     let self = this;
     this.http.onload = function() {
         callback(null, self.http.responseText); // null is passing the error first 
-    } // we dont need to check the status cause we are posting data
+    } // No need to check the status since we are posting data
 
-    this.http.send(JSON.stringify(data)); // our data will be a regular js object. so to send this data we need to send it on JSON string format, we will have to use the JSON.stringify method.
+    this.http.send(JSON.stringify(data)); // our data will be a regular js object. so to send this data we need to use JSON.stringify() method
 }
 
 
-// Make an HTTP PUT Request 
+// PUT Request 
 libraryHTTP.prototype.put = function(url, data, callback) {
     this.http.open('PUT', url, true);
     this.http.setRequestHeader('Content-type', 'application/json');
 
     let self = this;
     this.http.onload = function() {
-        callback(null, self.http.responseText); // null is passing the error first 
+        callback(null, self.http.responseText);
     }
-
     this.http.send(JSON.stringify(data));
 }
 
-// Make an HTTP DELETE Request 
+
+
+// Make HTTP DELETE Request 
 libraryHTTP.prototype.delete = function(url, callback) {
     this.http.open('DELETE', url, true);
 
@@ -61,8 +62,6 @@ libraryHTTP.prototype.delete = function(url, callback) {
             callback('Error: ' + self.http.status);
         }
     }
-
     this.http.send();
-
 
 }
