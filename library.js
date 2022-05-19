@@ -50,14 +50,14 @@ libraryHTTP.prototype.put = function(url, data, callback) {
 
 
 
-// Make HTTP DELETE Request 
+// DELETE Request 
 libraryHTTP.prototype.delete = function(url, callback) {
     this.http.open('DELETE', url, true);
 
     let self = this;
     this.http.onload = function() {
     if(self.http.status === 200) {
-        callback(null, 'Post Deleted'); // the response is gonna be an empty object cause it's a deleted post
+        callback(null, 'Post Deleted'); // the response is gonna be an empty object cause we are deleting a post
         } else {
             callback('Error: ' + self.http.status);
         }

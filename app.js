@@ -39,22 +39,22 @@ const data = {
 // });
 
 // Update post (PUT REQUEST)
-http.put('https://jsonplaceholder.typicode.com/posts/5', // 5 is the id of the post we want to update
-data, function(err, post) {
-    if(err) {
-    console.log(err);
-    } else {
-    console.log(post);
-    }
-});
-
-// Delete Posts
-// http.delete('https://jsonplaceholder.typicode.com/posts/1', // the url comes from the API documentation
-// function(err, response) {
+// http.put('https://jsonplaceholder.typicode.com/posts/5', // 5 is the id of the post we want to update
+// data, function(err, post) {
 //     if(err) {
 //     console.log(err);
 //     } else {
-//     console.log(response);
+//     console.log(post);
 //     }
-
 // });
+
+// DELETE Posts
+http.delete('https://jsonplaceholder.typicode.com/posts/1', // 
+function(err, response) {
+    if(err) {
+    console.log(err);
+    } else {
+    console.log(response);
+    }
+
+});
